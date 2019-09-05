@@ -1,5 +1,6 @@
---------------------------------- MODULE RaftMongo ---------------------------------
+--------------------------------- MODULE RaftMongoSyncSources ---------------------------------
 \* This is the formal specification for the Raft consensus algorithm in MongoDB
+\* This spec also models sync source selection.
 
 EXTENDS Naturals, FiniteSets, Sequences, TLC
 
@@ -85,6 +86,14 @@ IsLogPrefix(i, j) ==
 
 AppendOplog(i, j) ==
     \* /\ state[i] = Follower  \* Disable primary catchup and draining
+    /\ Len(log[i]) < Len(log[j])
+    /\ LastTerm(log[i]) = LogTerm(j, Len(log[i]))
+    /\ log' = [log EXCEPT ![i] = Append(log[i], log[j][Len(log[i]) + 1])]
+    /\ UNCHANGED <<serverVars>>
+
+AppendOplogFromSyncSource(i, j) ==
+    \* /\ state[i] = Follower  \* Disable primary catchup and draining
+    /\ syncSource[i] = j \* sync source selection rules. 
     /\ Len(log[i]) < Len(log[j])
     /\ LastTerm(log[i]) = LogTerm(j, Len(log[i]))
     /\ log' = [log EXCEPT ![i] = Append(log[i], log[j][Len(log[i]) + 1])]
@@ -206,6 +215,7 @@ LearnCommitPointFromSyncSourceNeverBeyondLastApplied(i, j) ==
 \* ACTION
 AppendEntryAndLearnCommitPointFromSyncSource(i, j) ==
     \* Append entry
+    \*/\ syncSource[i] = j \* Optionally enable sync source selection rules. 
     /\ Len(log[i]) < Len(log[j])
     /\ LastTerm(log[i]) = LogTerm(j, Len(log[i]))
     /\ log' = [log EXCEPT ![i] = Append(log[i], log[j][Len(log[i]) + 1])]
@@ -214,9 +224,56 @@ AppendEntryAndLearnCommitPointFromSyncSource(i, j) ==
     /\ commitPoint' = [commitPoint EXCEPT ![i] = commitPoint[j]]
     /\ UNCHANGED <<electionVars, syncSource>>
 
+\* ACTION
+\* Server i chooses server j as its new sync source.
+\* i can choose j as a sync source if log[i] is a prefix of log[j] and 
+\* log[j] is longer than log[i].
+ChooseNewSyncSource(i, j) == 
+    /\ \/ IsLogPrefix(i, j)
+\*       \* If logs are equal, allow choosing sync source if it has a newer commit point.
+       \/ /\ log[i] = log[j]
+          /\ commitPoint[j].index > commitPoint[i].index 
+    /\ state[i] = Follower \* leaders don't need to sync oplog entries.
+    /\ syncSource' = [syncSource EXCEPT ![i] = j]
+    /\ UNCHANGED <<electionVars, logVars, commitPoint>> 
+
+\* Does a 2 node sync source cycle exist?
+SyncSourceCycleTwoNode == 
+    \E s, t \in Server :
+        /\ s /= t 
+        /\ syncSource[s] = t
+        /\ syncSource[t] = s
+
+\* The set of all sequences with elements in set 's', of maximum length 'n'.
+BoundedSeq(s, n) == [1..n -> s]
+
+\* The set of all paths in the graph that consists of edges <<s,t>> where s has t as a sync
+\* source.
+SyncSourcePaths == 
+    {p \in BoundedSeq(Server, Cardinality(Server)) : 
+        \A i \in 1..(Len(p)-1) : syncSource[p[i]] = p[i+1]}
+
+\* Is there a non-trivial path in the sync source graph from node i to node j?
+\* This rules out trivial paths i.e. those of length 1.
+SyncSourcePath(i, j) == 
+    \E p \in SyncSourcePaths : 
+        /\ Len(p) > 1
+        /\ p[1] = i \* the source node.
+        /\ p[Len(p)]=j \* the target node.
+
+\* Does a general (possibly multi-node) sync source cycle exist?
+SyncSourceCycle == 
+    \E s \in Server : SyncSourcePath(s, s)
+    
+NonTrivialSyncCycle == SyncSourceCycle /\ ~SyncSourceCycleTwoNode
+NoNonTrivialSyncCycle == ~NonTrivialSyncCycle
+
 ----
 AppendOplogAction ==
     \E i,j \in Server : AppendOplog(i, j)
+
+AppendOplogFromSyncSourceAction ==
+    \E i,j \in Server : AppendOplogFromSyncSource(i, j)
 
 RollbackOplogAction ==
     \E i,j \in Server : RollbackOplog(i, j)
@@ -241,6 +298,9 @@ LearnCommitPointFromSyncSourceNeverBeyondLastAppliedAction ==
 
 AppendEntryAndLearnCommitPointFromSyncSourceAction ==
     \E i, j \in Server : AppendEntryAndLearnCommitPointFromSyncSource(i, j)
+
+ChooseNewSyncSourceAction == 
+    \E i, j \in Server : ChooseNewSyncSource(i, j)
     
 ----
 \* Properties to check
@@ -275,17 +335,18 @@ CommitPointAction == UNCHANGED vars
 \* Defines how the variables may transition.
 Next ==
     \* --- Replication protocol
-    \/ AppendOplogAction
+    \/ AppendOplogFromSyncSourceAction
     \/ RollbackOplogAction
     \/ BecomePrimaryByMagicAction
     \/ ClientWriteAction
+    \/ ChooseNewSyncSourceAction
     \*
     \* --- Commit point learning protocol
     \/ AdvanceCommitPoint
     \/ CommitPointAction
 
 Liveness ==
-    /\ SF_vars(AppendOplogAction)
+    /\ SF_vars(AppendOplogFromSyncSourceAction)
     /\ SF_vars(RollbackOplogAction)
     \* A new primary should eventually write one entry.
     /\ WF_vars(\E i \in Server : LastTerm(log[i]) # globalCurrentTerm /\ ClientWrite(i))
