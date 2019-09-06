@@ -11,4 +11,5 @@ workers=$1
 ./check.sh $workers "1_LearnCommitPointFromSyncSource_5_node.cfg" "RaftMongo.tla"
 ./check.sh $workers "1_LearnCommitPointFromSyncSource_5_node_noinv.cfg" "RaftMongo.tla"
 ./check.sh $workers "2_MultiNodeSyncSourceCycle.cfg" "RaftMongoSyncSources.tla"
+./check.sh $workers "2_MultiNodeSyncSourceCycle_noinv.cfg" "RaftMongoSyncSources.tla"
 ./check.sh $workers "3_CommitPointPropagationLiveness.cfg" "RaftMongo.tla"

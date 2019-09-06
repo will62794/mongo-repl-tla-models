@@ -1,10 +1,10 @@
 # MongoDB Replication TLA+ Models
 
-This repository houses TLC model configurations used to check different properties of the MongoDB replication protocol. The original spec is housed [here](https://github.com/visualzhou/mongo-repl-tla). This repository also includes an extended spec that models sync source selection.
+This repository houses TLC model configurations used to check different properties of the MongoDB replication protocol. The original spec is located [here](https://github.com/visualzhou/mongo-repl-tla). This repository also includes an [extended spec](RaftMongoSyncSources.tla) that models sync source selection.
 
 ### Model Checking Statistics
 
-These models have been run on a 2015 Macbook Pro and also on a 12-core Ubuntu 16.10 workstation. If you have the TLA+ tools installed you can run them all by running the `checkall.sh` script. Below are the various statistics for each model checking run. You can produce the output below by running the `report.sh` script after you have checked some models.
+The models have been run on a 2015 Macbook Pro and also on a 12-core Ubuntu 16.10 workstation. If you have the TLA+ tools installed you can run them all by running the `checkall.sh` script. Below are the various statistics for each model checking run. You can produce the output below by running the `report.sh` script after you have checked some models.
 
 **2015 Macbook Pro, 3.1 GHz Intel Core i7, 16 GB 1867 MHz DDR3, 3 TLC workers**
 ```
@@ -59,45 +59,53 @@ Finished in 03s at (2019-09-06 10:35:18)
 
 **Ubuntu 16.10 Workstation, Intel(R) Core(TM) i7-4930K CPU @ 3.40GHz, 32GB RAM, 10 TLC workers**
 ```
-Running model: 1_LearnCommitPoint.cfg, with spec: RaftMongo.tla, workers=10
+1_LearnCommitPoint.cfg.out
+Finished computing initial states: 1 distinct state generated at 2019-09-06 10:44:59.
 Error: Invariant NeverRollbackBeforeCommitPoint is violated.
-2151 states generated, 709 distinct states found, 368 states left on queue.
-Finished in 00s at (2019-09-05 18:16:45)
+1547 states generated, 530 distinct states found, 283 states left on queue.
+Finished in 00s at (2019-09-06 10:44:59)
 
-Running model: 1_LearnCommitPoint_noinv.cfg, with spec: RaftMongo.tla, workers=10
-Model checking completed. No error has been found.
-68431 states generated, 9177 distinct states found, 0 states left on queue.
-Finished in 01s at (2019-09-05 18:16:47)
-
-Running model: 1_LearnCommitPointFromSyncSource_3_node.cfg, with spec: RaftMongo.tla, workers=10
+1_LearnCommitPointFromSyncSource_3_node.cfg.out
+Finished computing initial states: 1 distinct state generated at 2019-09-06 10:45:01.
 Model checking completed. No error has been found.
 46220 states generated, 7402 distinct states found, 0 states left on queue.
-Finished in 01s at (2019-09-05 18:16:48)
+Finished in 01s at (2019-09-06 10:45:02)
 
-Running model: 1_LearnCommitPointFromSyncSource_3_node_noinv.cfg, with spec: RaftMongo.tla, workers=10
+1_LearnCommitPointFromSyncSource_3_node_noinv.cfg.out
+Finished computing initial states: 1 distinct state generated at 2019-09-06 10:45:03.
 Model checking completed. No error has been found.
 46220 states generated, 7402 distinct states found, 0 states left on queue.
-Finished in 01s at (2019-09-05 18:16:50)
+Finished in 01s at (2019-09-06 10:45:03)
 
-Running model: 1_LearnCommitPointFromSyncSource_5_node.cfg, with spec: RaftMongo.tla, workers=10
+1_LearnCommitPointFromSyncSource_5_node.cfg.out
+Finished computing initial states: 1 distinct state generated at 2019-09-06 10:45:04.
 Error: Invariant NeverRollbackBeforeCommitPoint is violated.
-16099 states generated, 2681 distinct states found, 1407 states left on queue.
-Finished in 01s at (2019-09-05 18:16:52)
+16874 states generated, 2733 distinct states found, 1420 states left on queue.
+Finished in 01s at (2019-09-06 10:45:05)
 
-Running model: 1_LearnCommitPointFromSyncSource_5_node_noinv.cfg, with spec: RaftMongo.tla, workers=10
-Progress(17) at 2019-09-05 18:16:55: 139,900 states generated (139,900 s/min), 17,244 distinct states found (17,244 ds/min), 7,276 states left on queue.
+1_LearnCommitPointFromSyncSource_5_node_noinv.cfg.out
+Finished computing initial states: 1 distinct state generated at 2019-09-06 10:45:06.
 Model checking completed. No error has been found.
 3161304 states generated, 230091 distinct states found, 0 states left on queue.
-Finished in 47s at (2019-09-05 18:17:40)
+Finished in 47s at (2019-09-06 10:45:53)
 
-Running model: 2_MultiNodeSyncSourceCycle.cfg, with spec: RaftMongoSyncSources.tla, workers=10
+1_LearnCommitPoint_noinv.cfg.out
+Finished computing initial states: 1 distinct state generated at 2019-09-06 10:45:00.
+Model checking completed. No error has been found.
+68431 states generated, 9177 distinct states found, 0 states left on queue.
+Finished in 01s at (2019-09-06 10:45:00)
+
+2_MultiNodeSyncSourceCycle.cfg.out
+Finished computing initial states: 1 distinct state generated at 2019-09-06 10:45:54.
 Error: Invariant NoNonTrivialSyncCycle is violated.
-36136 states generated, 6201 distinct states found, 2383 states left on queue.
-Finished in 02s at (2019-09-05 18:17:43)
+29280 states generated, 5384 distinct states found, 2286 states left on queue.
+Finished in 02s at (2019-09-06 10:45:56)
 
-Running model: 3_CommitPointPropagationLiveness.cfg, with spec: RaftMongo.tla, workers=10
-16993 states generated, 5324 distinct states found, 2601 states left on queue.
-Finished in 03s at (2019-09-05 18:17:47)
+3_CommitPointPropagationLiveness.cfg.out
+Finished computing initial states: 1 distinct state generated at 2019-09-06 10:45:57.
+Finished checking temporal properties in 00s at 2019-09-06 10:46:00
+19221 states generated, 5903 distinct states found, 2835 states left on queue.
+Finished in 03s at (2019-09-06 10:46:00)
 ```
 
 
