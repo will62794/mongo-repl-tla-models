@@ -8,7 +8,7 @@ The models have been run on a 2015 Macbook Pro and also on a 12-core Ubuntu 16.1
 
 ### 2015 Macbook Pro, 3.1 GHz Intel Core i7, 16 GB 1867 MHz DDR3, 3 TLC workers
 
-*1_LearnCommitPoint.cfg.out*
+1_LearnCommitPoint.cfg.out
 ```
 Finished computing initial states: 1 distinct state generated at 2019-09-06 10:31:29.
 Error: Invariant NeverRollbackBeforeCommitPoint is violated.
@@ -16,7 +16,7 @@ Error: Invariant NeverRollbackBeforeCommitPoint is violated.
 Finished in 01s at (2019-09-06 10:31:30)
 ```
 
-*1_LearnCommitPointFromSyncSource_3_node.cfg.out*
+1_LearnCommitPointFromSyncSource_3_node.cfg.out
 ```
 Finished computing initial states: 1 distinct state generated at 2019-09-06 11:10:07.
 Model checking completed. No error has been found.
@@ -24,15 +24,7 @@ Model checking completed. No error has been found.
 Finished in 03s at (2019-09-06 11:10:09)
 ```
 
-*1_LearnCommitPointFromSyncSource_3_node_noinv.cfg.out*
-```
-Finished computing initial states: 1 distinct state generated at 2019-09-06 10:31:39.
-Model checking completed. No error has been found.
-46220 states generated, 7402 distinct states found, 0 states left on queue.
-Finished in 02s at (2019-09-06 10:31:41)
-```
-
-*1_LearnCommitPointFromSyncSource_5_node.cfg.out*
+1_LearnCommitPointFromSyncSource_5_node.cfg.out
 ```
 Finished computing initial states: 1 distinct state generated at 2019-09-06 10:31:42.
 Error: Invariant NeverRollbackBeforeCommitPoint is violated.
@@ -40,7 +32,7 @@ Error: Invariant NeverRollbackBeforeCommitPoint is violated.
 Finished in 03s at (2019-09-06 10:31:45)
 ```
 
-*1_LearnCommitPointFromSyncSource_5_node_noinv.cfg.out*
+1_LearnCommitPointFromSyncSource_5_node_noinv.cfg.out
 ```
 Finished computing initial states: 1 distinct state generated at 2019-09-06 10:31:46.
 Model checking completed. No error has been found.
@@ -48,15 +40,15 @@ Model checking completed. No error has been found.
 Finished in 03min 20s at (2019-09-06 10:35:06)
 ```
 
-*1_LearnCommitPoint_noinv.cfg.out*
+1_LearnCommitPoint_noinv.cfg.out
 ```
-Finished computing initial states: 1 distinct state generated at 2019-09-06 10:31:31.
+Finished computing initial states: 1 distinct state generated at 2019-09-06 11:25:12.
 Model checking completed. No error has been found.
 68431 states generated, 9177 distinct states found, 0 states left on queue.
-Finished in 02s at (2019-09-06 10:31:33)
+Finished in 03s at (2019-09-06 11:25:14)
 ```
 
-*2_MultiNodeSyncSourceCycle.cfg.out*
+2_MultiNodeSyncSourceCycle.cfg.out
 ```
 Finished computing initial states: 1 distinct state generated at 2019-09-06 10:35:08.
 Error: Invariant NoNonTrivialSyncCycle is violated.
@@ -64,7 +56,7 @@ Error: Invariant NoNonTrivialSyncCycle is violated.
 Finished in 06s at (2019-09-06 10:35:14)
 ```
 
-*2_MultiNodeSyncSourceCycle_noinv.cfg.out*
+2_MultiNodeSyncSourceCycle_noinv.cfg.out
 ```
 Finished computing initial states: 1 distinct state generated at 2019-09-06 10:59:55.
 Model checking completed. No error has been found.
@@ -72,14 +64,14 @@ Model checking completed. No error has been found.
 Finished in 36s at (2019-09-06 11:00:30)
 ```
 
-*3_CommitPointPropagationLiveness.cfg.out*
+3_CommitPointPropagationLiveness.cfg.out
 ```
 Finished computing initial states: 1 distinct state generated at 2019-09-06 10:35:15.
+Error: Temporal properties were violated.
 Finished checking temporal properties in 00s at 2019-09-06 10:35:18
 1579 states generated, 711 distinct states found, 441 states left on queue.
 Finished in 03s at (2019-09-06 10:35:18)
 ```
-
 
 
 ### Ubuntu 16.10 Workstation, Intel Core i7-4930K CPU @ 3.40GHz, 32GB RAM, 10 TLC workers
@@ -92,7 +84,7 @@ Error: Invariant NeverRollbackBeforeCommitPoint is violated.
 Finished in 00s at (2019-09-06 10:44:59)
 ```
 
-*1_LearnCommitPointFromSyncSource_3_node.cfg.out*
+1_LearnCommitPointFromSyncSource_3_node.cfg.out
 ```
 Finished computing initial states: 1 distinct state generated at 2019-09-06 10:45:01.
 Model checking completed. No error has been found.
@@ -100,7 +92,7 @@ Model checking completed. No error has been found.
 Finished in 01s at (2019-09-06 10:45:02)
 ```
 
-*1_LearnCommitPointFromSyncSource_5_node.cfg.out*
+1_LearnCommitPointFromSyncSource_5_node.cfg.out
 ```
 Finished computing initial states: 1 distinct state generated at 2019-09-06 10:45:04.
 Error: Invariant NeverRollbackBeforeCommitPoint is violated.
@@ -108,7 +100,7 @@ Error: Invariant NeverRollbackBeforeCommitPoint is violated.
 Finished in 01s at (2019-09-06 10:45:05)
 ```
 
-*1_LearnCommitPointFromSyncSource_5_node_noinv.cfg.out*
+1_LearnCommitPointFromSyncSource_5_node_noinv.cfg.out
 ```
 Finished computing initial states: 1 distinct state generated at 2019-09-06 10:45:06.
 Model checking completed. No error has been found.
@@ -116,7 +108,7 @@ Model checking completed. No error has been found.
 Finished in 47s at (2019-09-06 10:45:53)
 ```
 
-*1_LearnCommitPoint_noinv.cfg.out*
+1_LearnCommitPoint_noinv.cfg.out
 ```
 Finished computing initial states: 1 distinct state generated at 2019-09-06 10:45:00.
 Model checking completed. No error has been found.
@@ -124,7 +116,7 @@ Model checking completed. No error has been found.
 Finished in 01s at (2019-09-06 10:45:00)
 ```
 
-*2_MultiNodeSyncSourceCycle.cfg.out*
+2_MultiNodeSyncSourceCycle.cfg.out
 ```
 Finished computing initial states: 1 distinct state generated at 2019-09-06 10:45:54.
 Error: Invariant NoNonTrivialSyncCycle is violated.
@@ -132,7 +124,7 @@ Error: Invariant NoNonTrivialSyncCycle is violated.
 Finished in 02s at (2019-09-06 10:45:56)
 ```
 
-*2_MultiNodeSyncSourceCycle_noinv.cfg.out*
+2_MultiNodeSyncSourceCycle_noinv.cfg.out
 ```
 Finished computing initial states: 1 distinct state generated at 2019-09-06 11:03:52.
 Model checking completed. No error has been found.
@@ -140,7 +132,7 @@ Model checking completed. No error has been found.
 Finished in 08s at (2019-09-06 11:04:00)
 ```
 
-*3_CommitPointPropagationLiveness.cfg.out*
+3_CommitPointPropagationLiveness.cfg.out
 ```
 Finished computing initial states: 1 distinct state generated at 2019-09-06 10:45:57.
 Finished checking temporal properties in 00s at 2019-09-06 10:46:00
