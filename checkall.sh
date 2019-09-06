@@ -4,6 +4,9 @@
 
 workers=$1
 
+# Clear any previous results.
+rm -rf results
+
 ./check.sh $workers "1_LearnCommitPoint.cfg" "RaftMongo.tla"
 ./check.sh $workers "1_LearnCommitPoint_noinv.cfg" "RaftMongo.tla"
 ./check.sh $workers "1_LearnCommitPointFromSyncSource_3_node.cfg" "RaftMongo.tla"
