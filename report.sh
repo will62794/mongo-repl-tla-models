@@ -4,7 +4,9 @@
 
 for f in `ls results` 
 do
-    echo $f
+    echo "*$f*"
+    echo "\`\`\`"
     grep "generated,\|Finished\|Invariant\|No error has" "results/$f"
+    echo "\`\`\`"
     echo ""
 done
