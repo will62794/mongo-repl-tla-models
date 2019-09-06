@@ -135,6 +135,7 @@ Finished in 08s at (2019-09-06 11:04:00)
 3_CommitPointPropagationLiveness.cfg.out
 ```
 Finished computing initial states: 1 distinct state generated at 2019-09-06 10:45:57.
+Error: Temporal properties were violated.
 Finished checking temporal properties in 00s at 2019-09-06 10:46:00
 19221 states generated, 5903 distinct states found, 2835 states left on queue.
 Finished in 03s at (2019-09-06 10:46:00)
