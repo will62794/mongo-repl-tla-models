@@ -50,6 +50,12 @@ Error: Invariant NoNonTrivialSyncCycle is violated.
 24201 states generated, 4414 distinct states found, 1844 states left on queue.
 Finished in 06s at (2019-09-06 10:35:14)
 
+2_MultiNodeSyncSourceCycle_noinv.cfg.out
+Finished computing initial states: 1 distinct state generated at 2019-09-06 10:59:55.
+Model checking completed. No error has been found.
+2492863 states generated, 226262 distinct states found, 0 states left on queue.
+Finished in 36s at (2019-09-06 11:00:30)
+
 3_CommitPointPropagationLiveness.cfg.out
 Finished computing initial states: 1 distinct state generated at 2019-09-06 10:35:15.
 Finished checking temporal properties in 00s at 2019-09-06 10:35:18
@@ -100,6 +106,12 @@ Finished computing initial states: 1 distinct state generated at 2019-09-06 10:4
 Error: Invariant NoNonTrivialSyncCycle is violated.
 29280 states generated, 5384 distinct states found, 2286 states left on queue.
 Finished in 02s at (2019-09-06 10:45:56)
+
+2_MultiNodeSyncSourceCycle_noinv.cfg.out
+Finished computing initial states: 1 distinct state generated at 2019-09-06 11:03:52.
+Model checking completed. No error has been found.
+2492863 states generated, 226262 distinct states found, 0 states left on queue.
+Finished in 08s at (2019-09-06 11:04:00)
 
 3_CommitPointPropagationLiveness.cfg.out
 Finished computing initial states: 1 distinct state generated at 2019-09-06 10:45:57.
