@@ -1,6 +1,6 @@
 # MongoDB Replication TLA+ Models
 
-This repository houses TLC model configurations used to check different properties of the MongoDB replication protocol. The original spec is located [here](https://github.com/visualzhou/mongo-repl-tla). This repository also includes an [extended spec](RaftMongoSyncSources.tla) that models sync source selection.
+This repository houses TLC model configurations used to check different properties of the MongoDB replication protocol. The original spec is located [here](https://github.com/visualzhou/mongo-repl-tla). This repository also includes an [extended spec](RaftMongoSyncSources.tla) that models sync source selection. This repo is intended to serve as a snapshot of the specs and models used to check certain properties of the MongoDB replication protocol during 2018 and 2019.
 
 ## Model Checking Statistics
 
