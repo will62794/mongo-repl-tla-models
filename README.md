@@ -83,50 +83,65 @@ Finished in 03s at (2019-09-06 10:35:18)
 
 
 ### Ubuntu 16.10 Workstation, Intel Core i7-4930K CPU @ 3.40GHz, 32GB RAM, 10 TLC workers
-```
+
 1_LearnCommitPoint.cfg.out
+```
 Finished computing initial states: 1 distinct state generated at 2019-09-06 10:44:59.
 Error: Invariant NeverRollbackBeforeCommitPoint is violated.
 1547 states generated, 530 distinct states found, 283 states left on queue.
 Finished in 00s at (2019-09-06 10:44:59)
+```
 
-1_LearnCommitPointFromSyncSource_3_node.cfg.out
+*1_LearnCommitPointFromSyncSource_3_node.cfg.out*
+```
 Finished computing initial states: 1 distinct state generated at 2019-09-06 10:45:01.
 Model checking completed. No error has been found.
 46220 states generated, 7402 distinct states found, 0 states left on queue.
 Finished in 01s at (2019-09-06 10:45:02)
+```
 
-1_LearnCommitPointFromSyncSource_5_node.cfg.out
+*1_LearnCommitPointFromSyncSource_5_node.cfg.out*
+```
 Finished computing initial states: 1 distinct state generated at 2019-09-06 10:45:04.
 Error: Invariant NeverRollbackBeforeCommitPoint is violated.
 16874 states generated, 2733 distinct states found, 1420 states left on queue.
 Finished in 01s at (2019-09-06 10:45:05)
+```
 
-1_LearnCommitPointFromSyncSource_5_node_noinv.cfg.out
+*1_LearnCommitPointFromSyncSource_5_node_noinv.cfg.out*
+```
 Finished computing initial states: 1 distinct state generated at 2019-09-06 10:45:06.
 Model checking completed. No error has been found.
 3161304 states generated, 230091 distinct states found, 0 states left on queue.
 Finished in 47s at (2019-09-06 10:45:53)
+```
 
-1_LearnCommitPoint_noinv.cfg.out
+*1_LearnCommitPoint_noinv.cfg.out*
+```
 Finished computing initial states: 1 distinct state generated at 2019-09-06 10:45:00.
 Model checking completed. No error has been found.
 68431 states generated, 9177 distinct states found, 0 states left on queue.
 Finished in 01s at (2019-09-06 10:45:00)
+```
 
-2_MultiNodeSyncSourceCycle.cfg.out
+*2_MultiNodeSyncSourceCycle.cfg.out*
+```
 Finished computing initial states: 1 distinct state generated at 2019-09-06 10:45:54.
 Error: Invariant NoNonTrivialSyncCycle is violated.
 29280 states generated, 5384 distinct states found, 2286 states left on queue.
 Finished in 02s at (2019-09-06 10:45:56)
+```
 
-2_MultiNodeSyncSourceCycle_noinv.cfg.out
+*2_MultiNodeSyncSourceCycle_noinv.cfg.out*
+```
 Finished computing initial states: 1 distinct state generated at 2019-09-06 11:03:52.
 Model checking completed. No error has been found.
 2492863 states generated, 226262 distinct states found, 0 states left on queue.
 Finished in 08s at (2019-09-06 11:04:00)
+```
 
-3_CommitPointPropagationLiveness.cfg.out
+*3_CommitPointPropagationLiveness.cfg.out*
+```
 Finished computing initial states: 1 distinct state generated at 2019-09-06 10:45:57.
 Finished checking temporal properties in 00s at 2019-09-06 10:46:00
 19221 states generated, 5903 distinct states found, 2835 states left on queue.
