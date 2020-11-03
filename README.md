@@ -4,7 +4,7 @@ This repository houses TLC model configurations used to check different properti
 
 ## Model Checking Statistics
 
-The models have been run on a 2015 Macbook Pro and also on a 12-core Ubuntu 16.10 workstation. If you have the TLA+ tools installed you can run them all by running the `checkall.sh` script. Below are the various statistics for each model checking run. You can produce the output below by running the `report.sh` script after you have checked some models.
+The models have been run on a 2015 Macbook Pro and also on a 12-core Ubuntu 16.10 workstation. If you have the TLA+ tools installed you can run them all by running the `checkall.sh` script. Below are the various statistics for each model checking run. You can produce the output below by running the `report.sh` script after you have checked some models. You can also download and install the TLA+ tools locally by running `source setup_tlc.sh`.
 
 ### 2015 Macbook Pro, 3.1 GHz Intel Core i7, 16 GB 1867 MHz DDR3, 3 TLC workers
 
@@ -14,6 +14,14 @@ Finished computing initial states: 1 distinct state generated at 2019-09-06 10:3
 Error: Invariant NeverRollbackBeforeCommitPoint is violated.
 1176 states generated, 424 distinct states found, 233 states left on queue.
 Finished in 01s at (2019-09-06 10:31:30)
+```
+
+1_LearnCommitPoint_noinv.cfg.out
+```
+Finished computing initial states: 1 distinct state generated at 2019-09-06 11:25:12.
+Model checking completed. No error has been found.
+68431 states generated, 9177 distinct states found, 0 states left on queue.
+Finished in 03s at (2019-09-06 11:25:14)
 ```
 
 1_LearnCommitPointFromSyncSource_3_node.cfg.out
@@ -38,14 +46,6 @@ Finished computing initial states: 1 distinct state generated at 2019-09-06 10:3
 Model checking completed. No error has been found.
 3161304 states generated, 230091 distinct states found, 0 states left on queue.
 Finished in 03min 20s at (2019-09-06 10:35:06)
-```
-
-1_LearnCommitPoint_noinv.cfg.out
-```
-Finished computing initial states: 1 distinct state generated at 2019-09-06 11:25:12.
-Model checking completed. No error has been found.
-68431 states generated, 9177 distinct states found, 0 states left on queue.
-Finished in 03s at (2019-09-06 11:25:14)
 ```
 
 2_MultiNodeSyncSourceCycle.cfg.out
@@ -84,6 +84,14 @@ Error: Invariant NeverRollbackBeforeCommitPoint is violated.
 Finished in 00s at (2019-09-06 10:44:59)
 ```
 
+1_LearnCommitPoint_noinv.cfg.out
+```
+Finished computing initial states: 1 distinct state generated at 2019-09-06 10:45:00.
+Model checking completed. No error has been found.
+68431 states generated, 9177 distinct states found, 0 states left on queue.
+Finished in 01s at (2019-09-06 10:45:00)
+```
+
 1_LearnCommitPointFromSyncSource_3_node.cfg.out
 ```
 Finished computing initial states: 1 distinct state generated at 2019-09-06 10:45:01.
@@ -106,14 +114,6 @@ Finished computing initial states: 1 distinct state generated at 2019-09-06 10:4
 Model checking completed. No error has been found.
 3161304 states generated, 230091 distinct states found, 0 states left on queue.
 Finished in 47s at (2019-09-06 10:45:53)
-```
-
-1_LearnCommitPoint_noinv.cfg.out
-```
-Finished computing initial states: 1 distinct state generated at 2019-09-06 10:45:00.
-Model checking completed. No error has been found.
-68431 states generated, 9177 distinct states found, 0 states left on queue.
-Finished in 01s at (2019-09-06 10:45:00)
 ```
 
 2_MultiNodeSyncSourceCycle.cfg.out
